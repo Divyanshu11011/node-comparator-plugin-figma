@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            background-color: #d5deff;
+        }
+
+        .comparator {
+            display: flex;
+            justify-content: space-around;
+            margin: 0 8vw;
+        }
+
+        .copy-container {
+            text-align: center;
+        }
+
+        .node1,
+        .node2 {
+            width: 45%;
+            position: relative;
+        }
+
+        .node-container {
+            width: 100%;
+            min-height: 50vh;
+            padding-left: 25%;
+            padding-top: 20vh;
+            box-sizing: border-box;
+            background-color: #c4c4c4;
+            font-size: 1 rem;
+            text-wrap: wrap;
+        }
+
+        button {
+            cursor: pointer;
+            right: 0;
+            padding: 3vh 4vh;
+            border: none;
+            background-color: #007bff00;
+            color: rgb(34, 34, 220);
+            font-size: 1rem;
+            font-weight: 500;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Node Comparing Plugin</h1>
+    <div class="comparator">
+        <div class="node1">
+            <p>Node 1</p>
+            <button id="copy-button-node-1">Copy</button>
+            <div id="node1" class="node-container"><span>node 1 first</span> </div>
+        </div>
+        <div class="node2">
+            <p>Node 2</p>
+            <button id="copy-button-node-2">Copy</button>
+            <div id="node2" class="node-container"><span>node 1 first</span></div>
+        </div>
+    </div>
+    <script>
+        let node1Data = {};
+        let node2Data = {};
+        onmessage = (event) => {
+            const { type, node1, node2 } = event.data.pluginMessage;
+            // console.log(node1);
+            // console.log(node2);
+            node1Data.propertiesOfNode1 = node1
+            node2Data.propertiesOfNode2 = node2
+            if (type === "comparison-result") {
+                document.getElementById("node1").innerText = node1
+                    ? JSON.stringify(node1, null, 2)
+                    : "Select node 1 first";
+                document.getElementById("node2").innerText = node2
+                    ? JSON.stringify(node2, null, 2)
+                    : "Select node 1 first";
+                if (node1) {
+                    document.getElementById("node1").style.backgroundColor = "white";
+                    document.getElementById("node1").style.paddingLeft = "2vh";
+                    if (!node2) {
+                        document.getElementById("node2").innerText = "Now Select the Node 2"
+                    }
+                } else {
+                    document.getElementById("node1").style.backgroundColor = "#C4C4C4";
+                }
+                if (node2) {
+                    document.getElementById("node2").style.backgroundColor = "white";
+                    document.getElementById("node2").style.paddingLeft = "2vh";
+                } else {
+                    document.getElementById("node2").style.backgroundColor = "#C4C4C4";
+                }
+            }
+        };
+        function copyTextToClipboardNode1() {
+            const textArea = document.createElement("textarea");
+            textArea.value = JSON.stringify(node1Data.propertiesOfNode1, null, 2);
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+
+        function copyTextToClipboardNode2() {
+            const textArea = document.createElement("textarea");
+            textArea.value = JSON.stringify(node2Data.propertiesOfNode2, null, 2);
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+
+        const copyButtonNode1 = document.getElementById("copy-button-node-1");
+        const copyButtonNode2 = document.getElementById("copy-button-node-2");
+        copyButtonNode1.addEventListener("click", copyTextToClipboardNode1);
+        copyButtonNode2.addEventListener("click", copyTextToClipboardNode2);
+    </script>
+</body>
+
+</html>
