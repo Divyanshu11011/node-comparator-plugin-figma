@@ -1,0 +1,1 @@
+# node-comparator-plugin-figma
