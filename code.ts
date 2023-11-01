@@ -1,4 +1,4 @@
-figma.showUI(__html__, { width: 700, height: 500 });
+figma.showUI(__html__, { width: 1000, height: 600 });
 
 let firstNode: SceneNode | null = null;
 let secondNode: SceneNode | null = null;
