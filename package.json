@@ -1,7 +1,7 @@
 {
-    "name": "node-comparetor-plugin",
+    "name": "node-comparator-plugin-figma",
     "version": "1.0.0",
-    "description": "Figma Plugin",
+    "description": "Figma Plugin to Compare Two Nodes",
     "main": "code.js",
     "scripts": {
         "build": "tsc -p tsconfig.json",
