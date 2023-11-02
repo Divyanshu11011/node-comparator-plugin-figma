@@ -16,10 +16,10 @@
    code .
    ```
 4. Install all the dependencies
-  ```bash
-  npm install
-  ```
-5. Run it with 
-  ```bash
-  npm run watch
-  ```
+   ```bash
+   npm install
+   ```
+5. Run it with
+   ```bash
+   npm run watch
+   ```
