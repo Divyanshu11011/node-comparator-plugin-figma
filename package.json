@@ -12,8 +12,5 @@
     "devDependencies": {
         "@figma/plugin-typings": "^1.79.0",
         "typescript": "*"
-    },
-    "dependencies": {
-        "@pgrabovets/json-view": "^2.7.5"
     }
 }
