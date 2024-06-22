@@ -1,0 +1,296 @@
+{
+    "id": "2052:2",
+    "parent": {
+        "id": "0:1",
+        "parent": {
+            "id": "0:0",
+            "parent": {},
+            "name": "Dualite Assignment TestCases (Copy)",
+            "removed": false,
+            "isAsset": false,
+            "detachedInfo": {},
+            "children": [
+                {
+                    "id": "0:1"
+                }
+            ],
+            "documentColorProfile": "SRGB",
+            "type": "DOCUMENT"
+        },
+        "name": "Page 1",
+        "removed": false,
+        "isAsset": false,
+        "detachedInfo": {},
+        "children": [
+            {
+                "id": "3:6"
+            },
+            {
+                "id": "2117:2"
+            },
+            {
+                "id": "3:7"
+            },
+            {
+                "id": "3:22"
+            },
+            {
+                "id": "3:25"
+            },
+            {
+                "id": "3:21"
+            },
+            {
+                "id": "3:8"
+            },
+            {
+                "id": "3:20"
+            },
+            {
+                "id": "2052:2"
+            },
+            {
+                "id": "2069:5"
+            },
+            {
+                "id": "2135:2"
+            },
+            {
+                "id": "2185:2"
+            },
+            {
+                "id": "2185:193"
+            }
+        ],
+        "guides": [],
+        "selection": [
+            {
+                "id": "2052:2"
+            }
+        ],
+        "selectedTextRange": {},
+        "backgrounds": [
+            {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                    "r": 0.9607843160629272,
+                    "g": 0.9607843160629272,
+                    "b": 0.9607843160629272
+                },
+                "boundVariables": {}
+            }
+        ],
+        "exportSettings": [],
+        "prototypeStartNode": {},
+        "explicitVariableModes": {},
+        "flowStartingPoints": [],
+        "prototypeBackgrounds": [
+            {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 0,
+                "blendMode": "NORMAL",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                },
+                "boundVariables": {}
+            }
+        ],
+        "type": "PAGE"
+    },
+    "name": "Frame 11",
+    "removed": false,
+    "isAsset": false,
+    "detachedInfo": {},
+    "visible": true,
+    "locked": false,
+    "stuckNodes": [],
+    "attachedConnectors": [],
+    "componentPropertyReferences": {},
+    "variableConsumptionMap": {},
+    "boundVariables": {},
+    "resolvedVariableModes": {},
+    "inferredVariables": {},
+    "explicitVariableModes": {},
+    "opacity": 1,
+    "blendMode": "PASS_THROUGH",
+    "isMask": false,
+    "maskType": "ALPHA",
+    "effects": [],
+    "effectStyleId": "",
+    "relativeTransform": [
+        [
+            1,
+            0,
+            -362
+        ],
+        [
+            0,
+            1,
+            3458
+        ]
+    ],
+    "absoluteTransform": [
+        [
+            1,
+            0,
+            -362
+        ],
+        [
+            0,
+            1,
+            3458
+        ]
+    ],
+    "x": -362,
+    "y": 3458,
+    "width": 2091,
+    "height": 723,
+    "absoluteBoundingBox": {
+        "x": -362,
+        "y": 3458,
+        "width": 2091,
+        "height": 723
+    },
+    "absoluteRenderBounds": {
+        "x": -362,
+        "y": 3458,
+        "width": 2091,
+        "height": 723
+    },
+    "rotation": 0,
+    "layoutAlign": "INHERIT",
+    "constrainProportions": false,
+    "layoutGrow": 0,
+    "layoutPositioning": "AUTO",
+    "minWidth": {},
+    "minHeight": {},
+    "maxWidth": {},
+    "maxHeight": {},
+    "layoutSizingHorizontal": "FIXED",
+    "layoutSizingVertical": "FIXED",
+    "children": [
+        {
+            "id": "2052:3"
+        }
+    ],
+    "exportSettings": [],
+    "fills": [
+        {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+            },
+            "boundVariables": {}
+        }
+    ],
+    "fillStyleId": "",
+    "strokes": [],
+    "strokeStyleId": "",
+    "strokeWeight": 1,
+    "strokeAlign": "INSIDE",
+    "strokeJoin": "MITER",
+    "dashPattern": [],
+    "strokeCap": "NONE",
+    "strokeMiterLimit": 4,
+    "fillGeometry": [
+        {
+            "windingRule": "NONZERO",
+            "data": "M0 0 L2091 0 L2091 723 L0 723 L0 0 Z"
+        }
+    ],
+    "strokeGeometry": [],
+    "cornerRadius": 0,
+    "cornerSmoothing": 0,
+    "topLeftRadius": 0,
+    "topRightRadius": 0,
+    "bottomLeftRadius": 0,
+    "bottomRightRadius": 0,
+    "paddingLeft": 0,
+    "paddingRight": 0,
+    "paddingTop": 0,
+    "paddingBottom": 0,
+    "primaryAxisAlignItems": "MIN",
+    "counterAxisAlignItems": "MIN",
+    "primaryAxisSizingMode": "AUTO",
+    "layoutWrap": "NO_WRAP",
+    "counterAxisSpacing": 0,
+    "counterAxisAlignContent": "AUTO",
+    "strokeTopWeight": 1,
+    "strokeBottomWeight": 1,
+    "strokeLeftWeight": 1,
+    "strokeRightWeight": 1,
+    "inferredAutoLayout": {
+        "layoutMode": "HORIZONTAL",
+        "paddingLeft": 595,
+        "paddingRight": 602,
+        "paddingTop": 208,
+        "paddingBottom": 207,
+        "counterAxisSizingMode": "AUTO",
+        "primaryAxisSizingMode": "AUTO",
+        "primaryAxisAlignItems": "MIN",
+        "counterAxisAlignItems": "CENTER",
+        "layoutAlign": "MIN",
+        "layoutGrow": 0,
+        "itemSpacing": 0,
+        "layoutPositioning": "AUTO"
+    },
+    "layoutGrids": [],
+    "gridStyleId": "",
+    "backgrounds": [
+        {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+            },
+            "boundVariables": {}
+        }
+    ],
+    "backgroundStyleId": "",
+    "clipsContent": true,
+    "guides": [],
+    "expanded": true,
+    "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+    },
+    "layoutMode": "NONE",
+    "counterAxisSizingMode": "FIXED",
+    "horizontalPadding": 0,
+    "verticalPadding": 0,
+    "itemSpacing": 0,
+    "overflowDirection": "NONE",
+    "numberOfFixedChildren": 0,
+    "overlayPositionType": "CENTER",
+    "overlayBackground": {
+        "type": "NONE"
+    },
+    "overlayBackgroundInteraction": "NONE",
+    "itemReverseZIndex": false,
+    "strokesIncludedInLayout": false,
+    "devStatus": {
+        "type": "READY_FOR_DEV"
+    },
+    "reactions": [],
+    "playbackSettings": {
+        "autoplay": true,
+        "loop": true,
+        "muted": false
+    },
+    "type": "FRAME"
+}

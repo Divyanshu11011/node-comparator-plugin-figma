@@ -1,11 +1,15 @@
 "use strict";
-figma.showUI(__html__, { width: 1000, height: 600 });
-let firstNode = null;
-let secondNode = null;
-function compareNodes() {
-    const node1 = firstNode ? extractProperties(firstNode) : null;
-    const node2 = secondNode ? extractProperties(secondNode) : null;
-    figma.ui.postMessage({ type: "comparison-result", node1, node2 });
+figma.showUI(__html__, { width: 600, height: 600 });
+let selectedNode = null;
+console.log("testing the nodetype ", selectedNode);
+function updateUIWithNodeData() {
+    if (selectedNode) {
+        const nodeData = extractProperties(selectedNode);
+        figma.ui.postMessage({ type: "node-data", nodeData });
+    }
+    else {
+        figma.ui.postMessage({ type: "node-data", nodeData: null });
+    }
 }
 function extractProperties(node) {
     const result = {};
@@ -21,16 +25,7 @@ function extractProperties(node) {
 }
 figma.on("selectionchange", () => {
     const nodes = figma.currentPage.selection;
-    const newFirstNode = nodes.length > 0 ? nodes[0] : null;
-    const newSecondNode = nodes.length > 1 ? nodes[1] : null;
-    if (firstNode != null) {
-        secondNode = newFirstNode;
-        compareNodes();
-    }
-    else if (newFirstNode !== firstNode || newSecondNode !== secondNode) {
-        firstNode = newFirstNode;
-        secondNode = newSecondNode;
-        compareNodes();
-    }
+    selectedNode = nodes.length > 0 ? nodes[0] : null;
+    updateUIWithNodeData();
 });
-compareNodes();
+updateUIWithNodeData();

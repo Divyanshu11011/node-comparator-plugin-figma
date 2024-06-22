@@ -7,43 +7,18 @@
             background-color: #d5deff;
         }
 
-        h1{
+        h1 {
             padding: 1vh 2vh;
-            color: #000000 ;
+            color: #000000;
             font-size: 20px;
             font-weight: 700;
             font-family: Inter;
         }
-        .comparator {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            margin: 0 8vw;
-            gap: 4vh;
-        }
-
-        .copy-container {
-            text-align: center;
-        }
-
-        .node1,
-        .node2 {
-            width: 327px;
-            position: relative;
-        }
-        .node1 > p,
-        .node2 > p{
-            font: "Inter";
-            font-size: 12px;
-            line-height: 14.52px;
-            font-weight: 400;
-        }
 
         .node-container {
-            width: 100%;
+            width: 327px;
             height: 347px;
-            padding-left: 30%;
-            padding-top: 26vh;
+            padding: 2vh;
             box-sizing: border-box;
             background-color: #c4c4c4;
             font-family: Inter;
@@ -51,94 +26,111 @@
             line-height: 14.52px;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.635);
+            overflow: scroll;
         }
 
         button {
             cursor: pointer;
-            right: 0;
-            padding: 3vh 4vh;
+            padding: 1vh 2vh;
             border: none;
             background-color: #007bff00;
             color: rgb(34, 34, 220);
             font-size: 1rem;
             font-weight: 500;
-            position: absolute;
         }
     </style>
 </head>
 
 <body>
     <h1>Node Comparing Plugin</h1>
-    <div class="comparator">
-        <div class="node1">
-            <p>Node 1</p>
-            <button id="copy-button-node-1">Copy</button>
-            <pre id="node1" class="node-container"><span>node 1 first</span> </pre>
-        </div>
-        <div class="node2">
-            <p>Node 2</p>
-            <button id="copy-button-node-2">Copy</button>
-            <pre id="node2" class="node-container"><span>node 1 first</span></pre>
-        </div>
-    </div>
+    <div id="node1-container" class="node-container"></div>
+    <div id="semantic-data-container" class="node-container"></div>
+    <button id="copy-button-node">Copy</button>
+    <button id="save-button-node">Save to Server</button>
+    <button id="semantic-tagging-button">Initiate Semantic Tagging</button>
 
     <script type="text/javascript">
-        let node1Data = {};
-        let node2Data = {};
+        let nodeData = {};
+        let semanticData = {};
+
         onmessage = (event) => {
-            const { type, node1, node2 } = event.data.pluginMessage;
-            node1Data.propertiesOfNode1 = node1
-            node2Data.propertiesOfNode2 = node2
-            if (type === "comparison-result") {
-                document.getElementById("node1").innerText = node1
-                    ? JSON.stringify(node1, null, 4)
-                    : "Select node 1 first";
-                document.getElementById("node2").innerText = node2
-                    ? JSON.stringify(node2, null, 4)
-                    : "Select node 1 first";
-                if (node1) {
-                    document.getElementById("node1").style.backgroundColor = "white";
-                    document.getElementById("node1").style.padding = "2vh";
-                    document.getElementById("node1").style.overflow = "scroll";
-                    
-                } else {
-                    document.getElementById("node1").style.overflow = "hidden" ;
-                    document.getElementById("node1").style.backgroundColor = "#C4C4C4";
-                }
-                if (node2) {
-                    document.getElementById("node2").style.backgroundColor = "white";
-                    document.getElementById("node2").style.padding = "2vh";
-                    document.getElementById("node2").style.overflow = "scroll";
-                } else {
-                    document.getElementById("node2").style.overflow = "hidden" ;
-                    document.getElementById("node2").style.backgroundColor = "#C4C4C4";
-                    document.getElementById("node2").innerText = "Now Select the Node 2"
-                   
+            const { type, nodeData: data, semanticData: sData } = event.data.pluginMessage;
+            if (!nodeData) {
+
+
+                if (type === "node-data") {
+                    document.getElementById("node1-container").innerText = data
+                        ? JSON.stringify(data, null, 4)
+                        : "Select a node";
+                    nodeData = data;
                 }
             }
+
+            if (type === "semantic-data") {
+                document.getElementById("semantic-data-container").innerText = sData
+                    ? JSON.stringify(sData, null, 4)
+                    : "Semantic data not available.";
+                semanticData = sData;
+            }
         };
-        function copyTextToClipboardNode1() {
+
+        function copyTextToClipboard() {
             const textArea = document.createElement("textarea");
-            textArea.value = JSON.stringify(node1Data.propertiesOfNode1, null, 1);
+            textArea.value = JSON.stringify(nodeData, null, 4);
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand("copy");
             document.body.removeChild(textArea);
         }
 
-        function copyTextToClipboardNode2() {
-            const textArea = document.createElement("textarea");
-            textArea.value = JSON.stringify(node2Data.propertiesOfNode2, null, 1);
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
+        function saveNodeData() {
+            fetch('http://localhost:5000/save-node', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(nodeData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Data saved successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Failed to save data!');
+                });
         }
 
-        const copyButtonNode1 = document.getElementById("copy-button-node-1");
-        const copyButtonNode2 = document.getElementById("copy-button-node-2");
-        copyButtonNode1.addEventListener("click", copyTextToClipboardNode1);
-        copyButtonNode2.addEventListener("click", copyTextToClipboardNode2);
+        function initiateSemanticTagging() {
+            fetch('http://localhost:5000/initiate-semantic-tagging', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(nodeData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    semanticData = data;
+                    document.getElementById("semantic-data-container").innerText = JSON.stringify(semanticData, null, 4);
+                    alert('Semantic tagging complete!');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Failed to initiate semantic tagging!');
+                });
+        }
+
+        const copyButton = document.getElementById("copy-button-node");
+        copyButton.addEventListener("click", copyTextToClipboard);
+
+        const saveButton = document.getElementById("save-button-node");
+        saveButton.addEventListener("click", saveNodeData);
+
+        const semanticTaggingButton = document.getElementById("semantic-tagging-button");
+        semanticTaggingButton.addEventListener("click", initiateSemanticTagging);
     </script>
 </body>
 

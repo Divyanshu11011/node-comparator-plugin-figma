@@ -11,8 +11,7 @@
   ],
   "ui": "ui.html",
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
+    "allowedDomains": ["http://localhost:5000"],
+    "reasoning": "Localhost access is required for local development and testing of the plugin."
   }
 }
